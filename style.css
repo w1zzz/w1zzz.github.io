@@ -151,7 +151,7 @@ tfoot td {
     text-shadow: 1px 1px 0px #fff;
 }
 
-input[type=month] { width: 100px; }
+input[type=month] { width: 150px; }
 input.cvv { width: 60px; text-align: right; }
 
 .buttons {
