@@ -2,191 +2,84 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Order form</title>
-	<link rel="stylesheet" href="style.css" type="text/css">
-	<script src="modernizr.js"></script>
+	<title>HTML5 Editor</title>
+	<link rel="stylesheet" href="style.css">
 	<script src="app.js"></script>
 </head>
-<body>
-	<form name="order" method="post" action="/submit">
-		<h1>Order Form</h1>
-		<fieldset>
-			<legend>Contact Details</legend>
-			<ul>
-				<li>
-					<label class="required">
-						<div>Full Name</div>
-						<input name="name" required autofocus>
-					</label>
-				</li>
-				<li>
-					<label class="required">
-						<div>Email Address</div>
-						<input type="email" name="email" required>
-					</label>
-				</li>
-				<li>
-					<label>
-						<div>Postal Address</div>
-						<input name="address1" placeholder="Address Line 1">
-					</label>
-					<div>&nbsp;</div>
-					<input name="address2" placeholder="Address Line 2">
-					<div>&nbsp;</div>
-					<input name="city" class="city" placeholder="Town/City">
-					<input name="state" class="state" placeholder="State">
-					<input name="zip" class="zip" placeholder="Zip Code">
-					<div>&nbsp;</div>
-					<select name="country">
-						<option value="0">Country</option>
-						<option value="US">United States</option>
-						<option value="CA">Canada</option>
-					</select>
-				</li>
-				<li>
-					<label>
-						<div>Home Phone No.</div>
-						<input type="tel" name="homephone">
-					</label>
-				</li>
-				<li>
-					<label>
-						<div>Cell Phone No.</div>
-						<input type="tel" name="cellphone">
-					</label>
-				</li>
-				<li>
-					<label>
-						<div>Skype Name</div>
-						<input name="skype">
-					</label>
-				</li>
-				<li>
-					<label>
-						<div>Twitter</div>
-						<span class="twitter_prefix">@</span>
-						<input name="twitter" class="twitter">
-					</label>
-				</li>
-			</ul>
-		</fieldset>
-		<fieldset>
-			<legend>Login Details</legend>
-			<ul>
-				<li>
-					<label class="required">
-						<div>Password</div>
-						<input type="password" name="password" required>
-					</label>
-				</li>
-				<li>
-					<label class="required">
-						<div>Confirm password</div>
-						<input type="password" name="confirm_password" required>
-					</label>
-				</li>
-			</ul>
-		</fieldset>
-		<fieldset>
-			<legend>Order Details</legend>
-			<table>
-				<thead>
-					<tr>
-						<th>Product Code</th>
-						<th>Description</th>
-						<th>Qty</th>
-						<th>Price</th>
-						<th>Total</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							COMP001
-							<input type="hidden" name="product_code" value="COMP001">
-						</td>
-						<td>The Ultimate Smartphone</td>
-						<td>
-							<input type="number" data-price="399.99" name="quantity" value="0" min="0" max="99" maxlength="2">
-						</td>
-						<td>$399.99</td>
-						<td>
-							<output name="item_total" class="item_total">$0.00</output>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							COMP002
-							<input type="hidden" name="product_code" value="COMP002">
-						</td>
-						<td>The Ultimate Tablet</td>
-						<td>
-							<input type="number" data-price="499.99" name="quantity" value="0" min="0" max="99" maxlength="2">
-						</td>
-						<td>$499.99</td>
-						<td>
-							<output name="item_total" class="item_total">$0.00</output>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							COMP003
-							<input type="hidden" name="product_code" value="COMP003">
-						</td>
-						<td>The Ultimate Netbook</td>
-						<td>
-							<input type="number" data-price="299.99" name="quantity" value="0" min="0" max="99" maxlength="2">
-						</td>
-						<td>$299.99</td>
-						<td>
-							<output name="item_total" class="item_total">$0.00</output>
-						</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="4">Order Total</td>
-						<td>
-							<output name="order_total" id="order_total">$0.00</output>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		</fieldset>
-		<fieldset>
-			<legend>Payment Details</legend>
-			<ul>
-				<li>
-					<label class="required">
-						<div>Name on Card</div>
-						<input name="card_name" required>
-					</label>
-				</li>
-				<li>
-					<label class="required">
-						<div>Credit Card No.</div>
-						<input name="card_number" pattern="[0-9]{13,16}" maxlength="16" required title="13-16 digits, no spaces">
-					</label>
-				</li>
-				<li>
-					<label class="required">
-						<div>Expiry Date</div>
-						<input type="month" name="card_expiry" maxlength="7" placeholder="YYYY-MM" required value="2015-06">
-					</label>
-				</li>
-				<li>
-					<label class="required">
-						<div>CVV2 No.</div>
-						<input name="card_cvv2" class="cvv" maxlength="3" pattern="[0-9]{3}" required title="exactly 3 digits">
-						<span>(Three digit code at back of card)</span>
-					</label>
-				</li>
-			</ul>
-		</fieldset>
-		<div class="buttons">
-			<input type="submit" value="Submit Order">
-			<input type="submit" id="saveOrder" value="Save Order" formnovalidate formaction="/save">
+<body class="browser-view">
+	<header><h1>HTML5 Editor</h1></header>
+	<section id="list">
+		<h1>File Browser</h1>
+		<details open id="filedrop">
+			<summary>Create File</summary>
+			<form name="create">
+				<div>
+					<h2>Create an empty file</h2>
+					<input type="text" name="name" placeholder=" e.g. index.html">
+					<input type="submit" value="Create">
+				</div>
+			</form>
+			<div class="spacer">OR</div>
+			<form name="import">
+				<div>
+					<h2>Import existing file(s)</h2>
+					<input type="file" name="files" multiple accept="text/html">
+					<input type="submit" value="Import">
+				</div>
+			</form>
+
+			<div class="note">
+				<strong>Note</strong>: You can drag files from your computer and drop them anywhere in this box to import them into the application.
+			</div>
+		</details>
+
+		<details open>
+			<summary>My files</summary>
+			<div class="note top">
+				You currently have <span id="file_count">0</span> file(s):
+			</div>
+			<ul id="files"></ul>
+			<div class="note">
+				<strong>Note</strong>: You can drag any of the files in the list above to your computer to export them from the application
+			</div>
+		</details>
+	</section>
+	<section id="editor">
+		<h1>Editing <span id="file_name"></span><a href="#list">Back to File Browser</a></h1>
+		<div class="mode-toolbar">
+			<div class="left">
+				<div>Edit Mode:</div>
+				<button id="edit_visual" class="split_left active">Visual</button>
+				<button id="edit_html" class="split_right">HTML</button>
+			</div>
+			<div class="right">
+				<button id="file_save" class="green">Save File</button>
+				<button id="file_preview">Save &amp; Preview</button>
+			</div>
 		</div>
-	</form>
+
+		<details open>
+			<summary>File Contents</summary>
+			<div id="file_contents">
+				<div id="file_contents_visual">
+					<div id="file_contents_visual_toolbar">
+						<button data-command="bold"><strong>B</strong></button>
+						<button data-command="italic"><em>I</em></button>
+						<button data-command="underline"><u>U</u></button>
+						<button data-command="strikethrough"><del>S</del></button>
+						<button data-command="insertUnorderedList">List</button>
+						<button data-command="createLink">Link</button>
+						<button data-command="unlink">Unlink</button>
+						<button data-command="insertImage">Image</button>
+						<button data-command="insertMap">Location Map</button>
+					</div>
+					<iframe id="file_contents_visual_editor"></iframe>
+				</div>
+				<div id="file_contents_html">
+					<textarea id="file_contents_html_editor"></textarea>
+				</div>
+			</div>
+		</details>
+	</section>
 </body>
 </html>
