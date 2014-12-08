@@ -8,7 +8,7 @@ canvas {
 	margin: 50px auto 10px;
 	border-radius: 5px;
 	box-shadow: 0 4px 0 0 #222;
-	cursor: url(https://cloud.githubusercontent.com/assets/9441229/5345701/b02582c2-7f11-11e4-9abe-160f20613d0d.png), crosshair;
+	cursor: url(cursor.png), crosshair;
 }
 .controls {
 	min-height: 60px;
