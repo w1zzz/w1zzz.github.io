@@ -1,134 +1,68 @@
-(function() {
-	var SuperEditor = function() {
-		var view, fileName, isDirty = false,
-		unsavedMsg = 'Unsaved changes will be lost. Are you sure?',
-		unsavedTitle = 'Discard changes';
+//Problem: No user interaction causes any change to the application
+//Solution: When user interacts, cause changes appropriately
 
-		var markDirty = function() {
-			isDirty = true;
-		};
+var color = $(".selected").css("background-color");
+var $canvas = $("canvas");
+var context = $canvas[0].getContext("2d");
+var lastEvent;
+var mouseDown = false;
 
-		var markClean = function() {
-			isDirty = false;
-		};
+//When clicking on control list items
+$(".controls").on("click", "li", function() {
+  //Deselect sibling elements
+  $(this).siblings().removeClass('selected');
+  //Select clicked element
+  $(this).addClass('selected');
+  //Cache current element
+  color = $(this).css("background-color");
+});
+  
 
-		var checkDirty = function() {
-			if(isDirty) { return unsavedMsg; }
-		};
-		window.addEventListener('beforeunload', checkDirty, false);
+//When new color is pressed
+$("#revealColorSelect").click(function() {
+  //Show color select or hide the color select
+  changeColor();
+  $("#colorSelect").toggle();
+});
 
-		var jump = function(e) {
-			var hash = location.hash;
+//Update the newColor span
+function changeColor() {
+  var r = $("#red").val();
+  var g = $("#green").val();
+  var b = $("#blue").val();
+  $("#newColor").css("background-color", "rgb(" + r + "," + g + ", " + b + ")");
+}
 
-			if(hash.indexOf('/') > -1) {
-				var parts = hash.split('/'),
-					fileNameEl = document.getElementById('file_name');
+//When color sliders change
+$("input[type=range]").on("input", changeColor);
 
-				view = parts[0].substring(1) + '-view';
-				fileName = parts[1];
-				fileNameEl.innerHTML = fileName;
-			} else {
-				if(!isDirty || confirm(unsavedMsg, unsavedTitle)) {
-					markClean();
-					view = 'browser-view';
-					if(hash != '#list') {
-						location.hash = '#list';
-					}
-				} else {
-					location.href = e.oldURL;
-				}
-			}
-			document.body.className = view;
-		};
-		jump();
+//When add color is pressed
+$("#addNewColor").click(function() {
+  //Append the new color to the list
+  var $newColor = $("<li></li>");
+  $newColor.css('background-color', $("#newColor").css("background-color"));
+  $(".controls ul").append($newColor);
+  //Select the new color  
+  $newColor.click();
+  $("#colorSelect").hide();
+});
 
-		window.addEventListener('hashchange', jump, false);
-
-		var editVisualButton = document.getElementById('edit_visual'),
-			visualView = document.getElementById('file_contents_visual'),
-			visualEditor = document.getElementById('file_contents_visual_editor'),
-			visualEditorDoc = visualEditor.contentDocument,
-			editHtmlButton = document.getElementById('edit_html'),
-			htmlView = document.getElementById('file_contents_html'),
-			htmlEditor = document.getElementById('file_contents_html_editor');
-
-		visualEditorDoc.designMode = 'on';
-		visualEditorDoc.addEventListener('keyup', markDirty, false);
-		htmlEditor.addEventListener('keyup', markDirty, false);
-
-		var updateVisualEditor = function(content) {
-			visualEditorDoc.open();
-			visualEditorDoc.write(content);
-			visualEditorDoc.close();
-			visualEditorDoc.addEventListener('keyup', markDirty, false);
-		};
-
-		var updateHtmlEditor = function(content) {
-			htmlEditor.value = content;
-		};
-
-		var toggleActiveView = function() {
-			if(htmlView.style.display == 'block') {
-				editVisualButton.className = 'split_left active';
-				visualView.style.display = 'block';
-				editHtmlButton.className = 'split_right';
-				htmlView.style.display = 'none';
-				updateVisualEditor(htmlEditor.value);
-			} else {
-				editHtmlButton.className = 'split_right active';
-				htmlView.style.display = 'block';
-				editVisualButton.className = 'split_left';
-				visualView.style.display = 'none';
-
-				var x = new XMLSerializer();
-				var content = x.serializeToString(visualEditorDoc);
-				updateHtmlEditor(content);
-			}
-		}
-		editVisualButton.addEventListener('click', toggleActiveView, false);
-		editHtmlButton.addEventListener('click', toggleActiveView, false);
-
-		var visualEditorToolbar = document.getElementById('file_contents_visual_toolbar');
-		var richTextAction = function(e) {
-			var command,
-				node = (e.target.nodeName === "BUTTON") ? e.target : e.target.parentNode;
-
-			if(node.dataset) {
-				command = node.dataset.command;
-			} else {
-				command = node.getAttribute('data-command');
-			}
-
-			var doPopupCommand = function(command, promptText, promptDefault) {
-				visualEditorDoc.execCommand(command, false, prompt(promptText, promptDefault));
-			}
-
-			if(command === 'createLink') {
-				doPopupCommand(command, 'Enter link URL:', 'http://www.example.com');
-			} else if(command === 'insertImage') {
-				doPopupCommand(command, 'Enter image URL:', 'http://www.example.com/image.png');
-			} else if(command === 'insertMap') {
-				if(navigator.geolocation) {
-					node.innerHTML = 'Loading';
-					navigator.geolocation.getCurrentPosition(function(pos) {
-						var coords = pos.coords.latitude + ',' + pos.coords.longitude;
-						var img = 'http://maps.googleapis.com/maps/api/staticmap?markers=' + coords + '&zoom=11&size=200x200&sensor=false';
-						visualEditorDoc.execCommand('insertImage', false, img);
-						node.innerHTML = 'Location Map';
-					});
-				} else {
-					alert('Geolocation not available', 'No geolocation data');
-				}
-			} else {
-				visualEditorDoc.execCommand(command);
-			}
-		};
-		visualEditorToolbar.addEventListener('click', richTextAction, false);
-	};
-
-	var init = function() {
-		new SuperEditor();
-	}
-
-	window.addEventListener('load', init, false);
-})();
+//On mouse events on the canvas
+$canvas.mousedown(function(e) {
+  lastEvent = e;
+  mouseDown = true;
+}).mousemove(function(e) {
+  //Draw lines
+  if(mouseDown) {
+  context.beginPath();
+  context.moveTo(lastEvent.offsetX, lastEvent.offsetY);
+  context.lineTo(e.offsetX, e.offsetY);
+  context.strokeStyle = color;
+  context.stroke();
+  lastEvent = e;
+  }  
+}).mouseup(function() {
+  mouseDown = false;
+}).mouseleave(function() {
+  mouseDown = false;
+});;
