@@ -8,7 +8,7 @@ canvas {
 	margin: 50px auto 10px;
 	border-radius: 5px;
 	box-shadow: 0 4px 0 0 #222;
-	cursor: url(cursor.png), crosshair;
+	cursor: url("http://puu.sh/dms8c/66eb949cda.png"), crosshair;
 }
 .controls {
 	min-height: 60px;
