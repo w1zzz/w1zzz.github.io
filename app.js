@@ -31,7 +31,7 @@ $(document).ready(function() {
 	$('#revealColorSelect').click(function(event) {
 		event.stopPropagation();
 		changeColor();
-		$("#colorSelect").show();
+		$("#colorSelect").toggle();
 	});
 });
 
