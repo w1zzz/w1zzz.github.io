@@ -3,7 +3,8 @@
 
 var color = $(".selected").css("background-color");
 var $canvas = $("canvas");
-var context = $canvas[0].getContext("2d");
+var context = $canvas[0].getContext('2d');
+var clearCanvas = document.getElementById("clearCanvas");
 var lastEvent;
 var mouseDown = false;
 
@@ -82,4 +83,8 @@ $canvas.mousedown(function(e) {
   mouseDown = false;
 }).mouseleave(function() {
   mouseDown = false;
-});;
+})
+
+clearCanvas.addEventListener('click', function() {
+  context.clearRect(0, 0, $canvas[0].width, $canvas[0].height);
+});

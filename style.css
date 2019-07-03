@@ -76,6 +76,13 @@ button {
 	padding: 5px 20px;
 	width: 160px;
 }
+#clearCanvas {
+	border: none;
+	border-radius: 5px;
+	margin: 10px auto;
+	padding: 5px 20px;
+	width: 160px;
+}
 
 /* New Color Palette */
 #colorSelect {
