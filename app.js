@@ -29,7 +29,7 @@ $(".controls").on("click", "li", function() {
 $(document).ready(function() {
 	$('#revealColorSelect').click(function(event) {
 		event.stopPropagation();
-		$( "#colorSelect" ).toggle();
+		$("#colorSelect").toggle();
 	});
 });
 
@@ -37,7 +37,7 @@ $(document).ready(function() {
 $(document).click(function(e) {
 	var targetbox = $('#colorSelect');
 	if(!targetbox.is(e.target) && targetbox.has(e.target).length === 0) {
-		$("#colorSelect".toggle();
+		$("#colorSelect").toggle();
 	}
 });
 
