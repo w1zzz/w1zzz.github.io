@@ -19,17 +19,17 @@ $(".controls").on("click", "li", function() {
   
 
 //When new color is pressed
-$("#revealColorSelect").click(function() {
+//$("#revealColorSelect").click(function() {
   //Show color select or hide the color select
-  changeColor();
-  $("#colorSelect").toggle();
-});
+//  changeColor();
+// $("#colorSelect").toggle();
+//});
 
 //Make colorSelect dissapear when clicking outside the box
 $(document).ready(function() {
 	$('#revealColorSelect').click(function(event) {
 		event.stopPropagation();
-		$( "#colorSelect" ).show();
+		$( "#colorSelect" ).toggle();
 	});
 });
 
@@ -37,7 +37,7 @@ $(document).ready(function() {
 $(document).click(function(e) {
 	var targetbox = $('#colorSelect');
 	if(!targetbox.is(e.target) && targetbox.has(e.target).length === 0) {
-		$('#colorSelect'.fadeOut('fast');
+		$("#colorSelect".toggle();
 	}
 });
 
