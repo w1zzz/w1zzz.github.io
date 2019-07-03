@@ -19,11 +19,11 @@ $(".controls").on("click", "li", function() {
   
 
 //When new color is pressed
-$("#revealColorSelect").click(function() {
+//$("#revealColorSelect").click(function() {
   //Show color select or hide the color select
-  changeColor();
-  $("#colorSelect").toggle();
-});
+//  changeColor();
+//  $("#colorSelect").toggle();
+//});
 
 //Make colorSelect dissapear when clicking outside the box
 $(document).ready(function() {
