@@ -25,6 +25,22 @@ $("#revealColorSelect").click(function() {
   $("#colorSelect").toggle();
 });
 
+//Make colorSelect dissapear when clicking outside the box
+$(document).ready(function() {
+	$('#revealColorSelect').click(function(event) {
+		event.stopPropagation();
+		$( "#colorSelect" ).show();
+	});
+});
+
+
+$(document).click(function(e) {
+	var targetbox = $('#colorSelect');
+	if(!targetbox.is(e.target) && targetbox.has(e.target).length === 0) {
+		$('#colorSelect'.fadeOut('fast');
+	}
+});
+
 //Update the newColor span
 function changeColor() {
   var r = $("#red").val();
