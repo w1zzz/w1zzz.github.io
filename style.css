@@ -72,13 +72,23 @@ button {
 #revealColorSelect {
 	border: none;
 	border-radius: 5px;
-	margin: 10px auto;
+	display: inline-block;
+	margin: 10px 0 0 10%;
 	padding: 5px 20px;
 	width: 160px;
 }
 #clearCanvas {
 	border: none;
 	border-radius: 5px;
+	display: inline-block;
+	margin: 10px auto;
+	padding: 5px 20px;
+	width: 160px;
+}
+#removeColor {
+	border: none;
+	border-radius: 5px;
+	display: inline-block;
 	margin: 10px auto;
 	padding: 5px 20px;
 	width: 160px;
