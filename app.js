@@ -1,15 +1,15 @@
 //Problem: No user interaction causes any change to the application
 //Solution: When user interacts, cause changes appropriately
 
-var color = $(".selected").css("background-color");
-var $canvas = $("canvas");
+var color = document.querySelector('.selected').css("background-color");
+var $canvas = document.querySelector('canvas');
 var context = $canvas[0].getContext('2d');
 var clearCanvas = document.getElementById("clearCanvas");
 var lastEvent;
 var mouseDown = false;
 
 //When clicking on control list items
-$(".controls").on("click", "li", function() {
+document.querySelector(".controls").addEventListener("click", "li", function() {
   //Deselect sibling elements
   $(this).siblings().removeClass('selected');
   //Select clicked element
@@ -17,29 +17,19 @@ $(".controls").on("click", "li", function() {
   //Cache current element
   color = $(this).css("background-color");
 });
-  
-
-//When new color is pressed
-//$("#revealColorSelect").click(function() {
-  //Show color select or hide the color select
-//  changeColor();
-// $("#colorSelect").toggle();
-//});
 
 //Make colorSelect dissapear when clicking outside the box
-$(document).ready(function() {
-	$('#revealColorSelect').click(function(event) {
-		event.stopPropagation();
-		changeColor();
-		$("#colorSelect").toggle();
-	});
+document.querySelector('#revealColorSelect').click(function(event) {
+	event.stopPropagation();
+	changeColor();
+	document.querySelector("#colorSelect").toggle();
 });
 
 
 $(document).click(function(e) {
-	var targetbox = $('#colorSelect');
+	var targetbox = $("#colorSelect");
 	if(!targetbox.is(e.target) && targetbox.has(e.target).length === 0) {
-		$("#colorSelect").fadeOut('fast');
+		targetbox.fadeOut('fast');
 	}
 });
 
