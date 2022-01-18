@@ -1,0 +1,388 @@
+/* ============= CSS RESET =============== */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-spacing: 0;
+}
+
+/* ============== FONTS ============== */
+
+@font-face {
+    font-family: MyriadProRegular;
+    src:    url('../fonts/MyriadProRegular.woff') format('woff'),
+            url('../fonts/MyriadProRegular.ttf') format('truetype');
+}
+body {
+    font-size: 1rem;
+    font-family: 'MyriadProRegular', Arial, Helvetica, sans-serif;
+}
+
+/* ============== HEADER ============= */
+
+.page-header {
+    min-height: 67px;
+    width: 100%;
+    background-color: rgba(31, 31, 31, 0.5);
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+.header-container {
+    width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+.page-header nav a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 0 25px;
+}
+.page-header nav a:hover {
+    color: #ffd45e;
+}
+.header-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header-logo img {
+    /* width: 120px;
+    height: 67px; */
+    padding-top: 5px;
+}
+.header-logo .SCE {
+    margin-top: 3px;
+    color: #ffd45e;
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 5px;
+}
+.header-logo .Construction {
+    color: #ffd45e;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-bottom: 3px;
+}
+.toggle-line {
+    display: block;
+    width: 100%;
+    height: 6px;
+    background-color: #f5c030;
+    border-radius: 4px;
+    margin: 2px 0;
+}
+.nav-toggle {
+    width: 50px;
+    background: none;
+    border: none;
+    display: none;
+}
+
+/* ============== MAIN ============= */
+/* ============== BANNER ============= */
+
+.banner {
+    height: 540px;
+    background: url(../images/bannerXL.jpg);
+    background-position: center center;
+    background-size: cover;
+    padding-top: 230px;
+    box-sizing: border-box;
+}
+.banner-block {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ============== CONTENT ============= */
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #FFEFBA;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #FFEFBA, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #FFEFBA, #FFFFFF); /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.aboutus, .contactus {
+    width: 1170px;
+    min-height: 67px;
+    margin: 50px auto;
+    margin-bottom: 20px;
+    display: block;
+}
+.aboutus h3, .testimonials h3, .contactus h3 {
+    text-align: center;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    color: #ffd45e;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.aboutus p, .testimonials p, .contactus p {
+    padding: 0 60px;
+    font-size: 1.05rem;
+    line-height: 1.3rem;
+    color: #777777;
+}
+.aboutus-btn, .contactus-btn {
+    display: flex;
+    margin: 40px auto;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 50px;
+    border: 2px solid #ffd45e;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffc935;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+.aboutus-btn:hover, .contactus-btn:hover {
+    box-shadow:
+    5px 5px 20px 0px #0002,
+    4px 4px 5px 0px #0001;
+}
+.testimonials {
+    width: 1170px;
+    min-height: 67px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    display: block;
+}
+.quotes {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.quotes .author {
+    color: #ffc219;
+}
+
+/* ============== FOOTER ============= */
+.page-footer {
+    min-height: 67px;
+    width: 100%;
+    background: rgb(32,32,32);
+    background: linear-gradient(90deg, rgba(32,32,32,1) 0%, rgba(79,51,28,1) 50%, rgba(32,32,32,1) 100%);
+    display: flex;
+    flex-direction: column;
+}
+.footer-container {
+    width: 1170px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.footer-logo {
+    width: 33.3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    padding-right: 60px;
+}
+.footer-logo .SCE {
+    margin-top: 3px;
+    color: #ffd45e;
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 5px;
+}
+.footer-logo .Construction {
+    color: #ffd45e;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-bottom: 3px;
+}
+.footer-address {
+    width: 33.3%;
+    height: 108.2px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 80px;
+    padding-right: 80px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+.address-header {
+    font-size: 1.5rem;
+    color: #ffd45e;
+    margin-bottom: 15px;
+}
+.company-name span {
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.footer-inner-address address {
+    margin-top: 10px;
+    color: white;
+}
+.footer-contact {
+    width: 33.3%;
+    height: 108.2px;
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+.contact-header {
+    font-size: 1.5rem;
+    color: #ffd45e;
+    margin-bottom: 15px;
+}
+.contact-inner .phone a, .email a {
+    text-decoration: none;
+    color: #fff;
+}
+.contact-inner .email a:hover, .phone a:hover {
+    color: #ffd45e;
+}
+.contact-inner .email {
+    margin-top: 5px;
+}
+.socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.socials a {
+    display: block;
+    color: #ffd45e;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-right: 20px;
+    padding-top: 8px;
+}
+.socials a:hover {
+    color: #fff;
+}
+.copyright {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 1.1rem;
+}
+.copyright span {
+    color: #ffd45e;
+    font-size: 1.2rem;
+}
+/* ============== MEDIA QUERIES ============= */
+
+@media (max-width: 1199px) {
+    .page-header {
+        position: absolute;
+    }
+    .nav-toggle {
+        display: block;
+        order: 1;
+        cursor: pointer;
+    }
+    nav {
+        position: absolute;
+        top: 100%;
+        z-index: 10;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    .left-nav, .right-nav {
+        display: none;
+    }
+    .open .left-nav, .open .right-nav {
+        display: block;
+    }
+    .left-nav {
+        left: 15px;
+    }
+    .right-nav {
+        right: 15px;
+    }
+    nav li {
+        margin: 15px 0;
+    }
+    .open::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 150px;
+        background-color: rgba(31, 31, 31, 0.5);
+        position: absolute;
+        top: 100%;
+        /* box-shadow: inset 0 20px 10px -25px rgba(245, 192, 48, 0.8); */
+    }
+    .page-header .header-container {
+        justify-content: space-between;
+    }
+    .wrapper {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+}
+@media (max-width: 575px) {
+    .banner {
+        height: 405px;
+        background: url(../images/banner3.jpg);
+    }
+    .banner-block {
+        font-size: 2.5rem;
+        margin-top: 0;
+    }
+}
