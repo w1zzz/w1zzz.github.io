@@ -65,6 +65,7 @@ textarea {
     position: absolute;
     display: flex;
     align-items: center;
+    z-index: 1000;
 }
 .header-container {
     width: 1170px;
@@ -151,6 +152,7 @@ nav ul {
 .main-container {
     width: 100%;
     display: flex;
+    min-height: 400px;
     flex-direction: column;
     background: #FFEFBA;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #FFEFBA, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
@@ -215,6 +217,116 @@ nav ul {
 }
 .quotes .author {
     color: #ffc219;
+}
+
+/* ============== PROJECTS ============= */
+
+/* ============== PROJECTS SLIDER ============= */
+
+.banner-projects {
+    height: 540px;
+    position: relative;
+}
+.slider {
+    overflow: hidden;
+    height: 100%;
+}
+.slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 20s slider infinite;
+}
+.slider figure img {
+    width: 20%;
+    float: left;
+    transform: translateY(-20%);
+}
+.slider-text {
+    margin-left: auto;
+    margin-right: auto;
+    top: -260px;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+}
+
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+    20% {
+        left: 0;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -300%;
+    }
+    95% {
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
+}
+
+/* ============== PROJECTS CONTAINER ============= */
+
+.projects-container {
+    width: 1170px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: 500px;
+    margin: 40px auto 0 auto;
+}
+.project {
+    width: 350px;
+    height: 300px;
+    /* border: 1px solid #fff; */
+    border-radius: 5px;
+    margin-bottom: 50px;
+    overflow: hidden;
+    position: relative;
+}
+.project img {
+    position: absolute;
+    width: 350px;
+    height: 300px;
+    transition: all .5s ease-in-out;
+    z-index: 400;
+}
+.project img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.project span {
+    width: 350px;
+    position: absolute;
+    z-index: 1200;
+    bottom: 0;
+    overflow: hidden;
+    height: 70px;
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ffd86e;
+    line-height: 70px;
 }
 
 /* ============== CONTACT FORM ============= */
